@@ -15,7 +15,7 @@ export default function Header() {
       <div className={styles.logo}>MyShop</div>
 
       <nav className={styles.destopNav}>
-        <NavLink to="/" className={styles.link}>
+        <NavLink to="/" className={styles.homeLink}>
           <AiFillHome size={28} />
         </NavLink>
         <NavLink to="/products" className={styles.link}>
@@ -27,7 +27,9 @@ export default function Header() {
         <NavLink to="aboutcontactpage" className={styles.link}>
           Kontakt os
         </NavLink>
-        <NavLink to=""
+        <NavLink to="favorites" className={styles.favLink}>
+          <FaHeart size={28} />
+        </NavLink>
       </nav>
 
       <div className={styles.burgerIcon} onClick={() => setMenuOpen(true)}>
@@ -40,15 +42,41 @@ export default function Header() {
         </div>
 
         <nav className={styles.mobileNav}>
-            <NavLink to="/" className={styles.mobileLink} onClick={handleLinkClick} >
+          <NavLink
+            to="/"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
             HJEM
-            </NavLink>
-            <NavLink to="/aboutcontactpage" className={styles.mobileLink} onClick={handleLinkClick} >
+          </NavLink>
+          <NavLink
+            to="/aboutcontactpage"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
             OM OS
-            </NavLink>
-
-
-
+          </NavLink>
+          <NavLink
+            to="/products"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
+            PRODUKTER
+          </NavLink>
+          <NavLink
+            to="/aboutcontactpage"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
+            KONTAKT OS
+          </NavLink>
+          <NavLink
+            to="/favorites"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
+            FAVORITTER
+          </NavLink>
         </nav>
       </div>
     </header>
