@@ -15,7 +15,7 @@ export default function Header() {
       <div className={styles.logo}>MyShop</div>
 
       <nav className={styles.destopNav}>
-        <NavLink to="/" className={styles.homeLink}>
+        <NavLink to="/" className={styles.link}>
           <AiFillHome size={28} />
         </NavLink>
         <NavLink to="/products" className={styles.link}>
@@ -27,7 +27,7 @@ export default function Header() {
         <NavLink to="aboutcontactpage" className={styles.link}>
           Kontakt os
         </NavLink>
-        <NavLink to="favorites" className={styles.favLink}>
+        <NavLink to="favorites" className={styles.link}>
           <FaHeart size={28} />
         </NavLink>
       </nav>
