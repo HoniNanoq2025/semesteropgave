@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import { AiFillHome } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa6";
+import { FaShoppingCart } from "react-icons/fa";
 import styles from "./Header.module.css";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleLinkClick = () => setMenuOpen(false);
+  const location = useLocation();
+  const shouldShow = (route) => location.pathname !== route;
 
   return (
     <header className={styles.header}>
@@ -21,15 +24,22 @@ export default function Header() {
         <NavLink to="/products" className={styles.link}>
           Produkter
         </NavLink>
-        <NavLink to="/aboutcontactpage" className={styles.link}>
+        <NavLink to="/about-contact#about" className={styles.link}>
           Om os
         </NavLink>
-        <NavLink to="aboutcontactpage" className={styles.link}>
+        <NavLink to="about-contact#contact" className={styles.link}>
           Kontakt os
         </NavLink>
-        <NavLink to="favorites" className={styles.link}>
-          <FaHeart size={28} />
-        </NavLink>
+        {shouldShow("/favorites") && (
+          <NavLink to="favorites" className={styles.favLink}>
+            <FaHeart size={28} />
+          </NavLink>
+        )}
+        {shouldShow("/cart") && (
+          <NavLink to="cart" className={styles.cartLink}>
+            <FaShoppingCart size={28} />
+          </NavLink>
+        )}
       </nav>
 
       <div className={styles.burgerIcon} onClick={() => setMenuOpen(true)}>
@@ -50,7 +60,7 @@ export default function Header() {
             HJEM
           </NavLink>
           <NavLink
-            to="/aboutcontactpage"
+            to="/about-contact#about"
             className={styles.mobileLink}
             onClick={handleLinkClick}
           >
@@ -64,7 +74,7 @@ export default function Header() {
             PRODUKTER
           </NavLink>
           <NavLink
-            to="/aboutcontactpage"
+            to="/about-contact#contact"
             className={styles.mobileLink}
             onClick={handleLinkClick}
           >

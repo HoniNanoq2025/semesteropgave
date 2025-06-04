@@ -6,6 +6,7 @@ import AboutContact from "./pages/AboutContactPage/AboutContactPage";
 import Products from "./pages/Products/Products";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Favorites from "./pages/Favorites/Favorites";
+import CartPage from "./pages/CartPage/CartPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/about-contact" element={<AboutContact />} />
           <Route path="/products" element={<Products />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route
             path="/products/:id"
             element={
