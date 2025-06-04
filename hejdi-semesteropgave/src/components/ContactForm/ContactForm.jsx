@@ -23,23 +23,31 @@ const ContactForm = () => {
     >
       <h2 className={styles.formHeading}>Kontakt os</h2>
       <input
+        {...register("name", { required: "Navn er påkrævet" })}
         type="text"
-        {...register("firstname", { required: "Fornavn er påkrævet" })}
-        placeholder="Fornavn"
-        className={`${styles.input} ${
-          errors.firstname ? styles.inputError : ""
-        }`}
-        aria-invalid={errors.firstname ? "true" : "false"}
+        placeholder="Navn"
+        className={`${styles.input} ${errors.name ? styles.inputError : ""}`}
+        aria-invalid={errors.name ? "true" : "false"}
       />
+      {errors.name && (
+        <p role="alert" className={styles.errors}>
+          {errors.name.message}
+        </p>
+      )}
       <input
-        type="text"
         {...register("lastname", { required: "Efternavn er påkrævet" })}
+        type="text"
         placeholder="Efternavn"
         className={`${styles.input} ${
           errors.lastname ? styles.inputError : ""
         }`}
         aria-invalid={errors.lastname ? "true" : "false"}
       />
+      {errors.lastname && (
+        <p role="alert" className={styles.errors}>
+          {errors.lastname.message}
+        </p>
+      )}
       <input
         {...register("email", {
           required: "Email er påkrævet",
