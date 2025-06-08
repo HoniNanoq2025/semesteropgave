@@ -1,0 +1,32 @@
+.codeWrapper {
+  margin-top: 1rem;
+}
+
+.inputDiscountGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputDiscount {
+  flex: 1;
+  padding: 0.5rem;
+  background-color: 99D98C;
+}
+
+.inputDiscount::placeholder {
+  color: #5e5e5e;
+}
+
+.discountBtn {
+  background-color: #34a0a4;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+
+.discountMessage {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
