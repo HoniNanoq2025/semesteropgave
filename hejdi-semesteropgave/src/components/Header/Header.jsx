@@ -17,7 +17,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.logo}>MyShop</div>
 
-      <nav className={styles.destopNav}>
+      <nav className={styles.desktopNav}>
         <NavLink to="/" className={styles.link}>
           <AiFillHome size={28} />
         </NavLink>
