@@ -5,7 +5,7 @@ import styles from "./ProductList.module.css";
 export default function ProductList({
   products,
   favoriteIds,
-  toggleFavorites,
+  toggleFavorite,
   addToCart,
 }) {
   if (products.length === 0) {
@@ -26,25 +26,32 @@ export default function ProductList({
                 <div className={styles.imageContainer}>
                   <div
                     className={styles.image}
-                    style={{ backgroundImage: `url(${imageUrl})` }}
+                    style={{ backgroundImage: prod.images }}
                     role="img"
                     aria-label={prod.title}
                   />
                   <button
-                    className={`${styles.likeBtn} ${
-                      isFavorite(prod.id) ? styles.liked : ""
+                    onClick={() => toggleFavorite(prod.id)}
+                    className={`${styles.favoriteBtn} ${
+                      isFavorite ? styles.favorited : ""
                     }`}
-                    onClick={() => toggleFavorites(prod.id)}
-                  />
+                    aria-label={
+                      isFavorite
+                        ? "Fjern fra favoritter"
+                        : "Tilføj til favoritter"
+                    }
+                  >
+                    {isFavorite ? "❤️" : "🤍"}
+                  </button>
                 </div>
                 <h4 className={styles.productTitle}>{prod.title}</h4>
-                <div>
+                <div className={styles.priceContainer}>
                   <h4 className={styles.price}>
                     <strong>{prod.price} DKK</strong>
                   </h4>
                   <button
                     onClick={() => addToCart(prod)}
-                    className={styles.addButton}
+                    className={styles.addCartBtn}
                   >
                     <FaShoppingCart size={28} />
                   </button>
