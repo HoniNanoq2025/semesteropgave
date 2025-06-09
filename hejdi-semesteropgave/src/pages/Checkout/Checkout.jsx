@@ -82,21 +82,36 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
             className={styles.checkoutForm}
           >
             <label>Navn</label>
-            <input type="text" {...register("name", { required: true })} />
+            <input
+              type="text"
+              {...register("name", { required: true })}
+              placeholder="Fornavn..."
+            />
             {errors.name && <p className={styles.error}>Navn er påkrævet</p>}
 
             <label>Efternavn</label>
-            <input type="text" {...register("lastname", { required: true })} />
+            <input
+              type="text"
+              {...register("lastname", { required: true })}
+              placeholder="Efternavn..."
+            />
             {errors.lastname && (
               <p className={styles.error}>Efternavn er påkrævet</p>
             )}
 
             <label>Email</label>
-            <input type="email" {...register("email", { required: true })} />
+            <input
+              type="email"
+              {...register("email", { required: true })}
+              placeholder="Email..."
+            />
             {errors.email && <p className={styles.error}>Email er påkrævet</p>}
 
             <label>Adresse</label>
-            <input {...register("address", { required: true })} />
+            <input
+              {...register("address", { required: true })}
+              placeholder="Adresse..."
+            />
             {errors.address && (
               <p className={styles.error}>Adresse er påkrævet</p>
             )}
