@@ -1,5 +1,6 @@
 import { IoMdStar } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import styles from "./ProductList.module.css";
 
 export default function ProductList({
@@ -51,7 +52,12 @@ export default function ProductList({
                     {isFavorite ? "❤️" : "🤍"}
                   </button>
                 </div>
-                <h5 className={styles.productTitle}>{prod.title}</h5>
+                <Link
+                  to={`/products/${prod.id}`}
+                  className={styles.productTitleLink}
+                >
+                  <h5 className={styles.productTitle}>{prod.title}</h5>
+                </Link>
                 <div className={styles.priceContainer}>
                   <h4 className={styles.price}>
                     <strong>{prod.price} DKK</strong>

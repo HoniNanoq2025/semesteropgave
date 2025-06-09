@@ -59,6 +59,22 @@
   padding-right: 0.5rem;
 }
 
+.productTitleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productTitleLink:hover .productTitle,
+.productTitle.clickable {
+  cursor: pointer;
+  color: #1a759f;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+}
+
+
+
 .priceContainer {
   display: flex;
   flex-direction: row;
