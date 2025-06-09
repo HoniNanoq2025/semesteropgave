@@ -6,14 +6,14 @@ import AboutContact from "./pages/AboutContactPage/AboutContactPage";
 import Products from "./pages/Products/Products";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Favorites from "./pages/Favorites/Favorites";
-import CartPage from "./pages/CartPage/CartPage";
-import Checkout from "./pages/Checkout/Checkout"
+import Checkout from "./pages/Checkout/Checkout";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 
 export default function App() {
   const [favorites, setFavorites] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
@@ -27,9 +27,27 @@ export default function App() {
     }
   }, []);
 
+  // Load cart from localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      try {
+        setCart(JSON.parse(savedCart));
+      } catch (error) {
+        console.error("Error parsing saved cart:", error);
+        setCart([]);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
+
+  // Save cart to localStorage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   // Function to toggle favorites status
   const toggleFavorites = (id) => {
@@ -40,6 +58,21 @@ export default function App() {
     }
   };
 
+  // Function to add product to cart
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
+  // Function to remove item from cart
+  const removeFromCart = (index) => {
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+  };
+
+  // Function to clear entire cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <div className={styles.app}>
       <Header />
@@ -47,15 +80,43 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-contact" element={<AboutContact />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<Checkout />} />
+          <Route
+            path="/products"
+            element={
+              <Products
+                addToCart={addToCart}
+                favorites={favorites}
+                toggleFavorites={toggleFavorites}
+              />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                favorites={favorites}
+                toggleFavorites={toggleFavorites}
+                addToCart={addToCart}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <Checkout
+                cart={cart}
+                removeFromCart={removeFromCart}
+                clearCart={clearCart}
+              />
+            }
+          />
           <Route
             path="/products/:id"
             element={
               <ProductCard
                 toggleFavorites={toggleFavorites}
                 favorites={favorites}
+                addToCart={addToCart}
               />
             }
           />

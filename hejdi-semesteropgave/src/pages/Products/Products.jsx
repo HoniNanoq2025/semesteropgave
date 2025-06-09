@@ -8,7 +8,7 @@ import {
   saveFavoritesToStorage,
 } from "../../utils/localStorage";
 
-export default function Products() {
+export default function Products({ addToCart, favorites, toggleFavorites }) {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -113,8 +113,9 @@ export default function Products() {
         <>
           <ProductList
             products={pagedProducts}
-            favoriteIds={favoriteIds}
-            toggleFavorite={toggleFavorite}
+            favoriteIds={favorites}
+            toggleFavorite={toggleFavorites}
+            addToCart={addToCart}
           />
           <Pagination
             currentPage={currentPage}

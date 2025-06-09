@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import DiscountCode from "../../components/DiscountCode/DiscountCode";
 import styles from "./Checkout.module.css";
 
-export default function Checkout() {
+export default function Checkout({ cart = [] }) {
   const {
     register,
     handleSubmit,
@@ -13,12 +13,18 @@ export default function Checkout() {
 
   const shippingFee = 50;
 
+  // Calculate subtotal from cart items
+  const calculateSubtotal = () => {
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
   const calculateTotal = () => {
-    let total = product.price + shippingFee;
+    const subtotal = calculateSubtotal();
+    let total = subtotal + shippingFee;
 
     if (discount) {
       if (discount.type === "percent") {
-        total -= (product.price * discount.value) / 100;
+        total -= (subtotal * discount.value) / 100;
       } else if (discount.type === "fixed") {
         total -= discount.value;
       } else if (discount.type === "freeShipping") {
@@ -35,6 +41,18 @@ export default function Checkout() {
   return (
     <div className={styles.checkoutContainer}>
       <h1>Kurv</h1>
+      <div className={styles.cart}>
+        {cart.length === 0 ? (
+          <p>Din kurv er tom</p>
+        ) : (
+          cart.map((item, index) => (
+            <div key={index} className={styles.cartItem}>
+              <span>{item.title}</span>
+              <span>{item.price} DKK</span>
+            </div>
+          ))
+        )}
+      </div>
       <div>
         <DiscountCode onApply={setDiscount} />
       </div>
@@ -55,15 +73,16 @@ export default function Checkout() {
         {errors.address && <p className={styles.error}>Adresse er påkrævet</p>}
         <div className={styles.checkoutPrice}>
           <div className={styles.totalTitles}>
+            <p>Subtotal:</p>
             <p>Fragt:</p>
             <p>
               <strong>Total:</strong>
             </p>
           </div>
           <div className={styles.totalPrice}>
+            <p>{calculateSubtotal()} kr.</p>
             <p>
-              {" "}
-              {discount?.type === "freeshipping"
+              {discount?.type === "freeShipping"
                 ? "0 kr."
                 : `${shippingFee} kr.`}
             </p>
