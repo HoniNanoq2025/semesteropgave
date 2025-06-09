@@ -27,7 +27,7 @@ export default function DiscountCode({ onApply }) {
 
   return (
     <div className={styles.codeWrapper}>
-      <h5>Rabatkode:</h5>
+      <label>Rabatkode</label>
       <div className={styles.inputDiscountGroup}>
         <input
           type="text"

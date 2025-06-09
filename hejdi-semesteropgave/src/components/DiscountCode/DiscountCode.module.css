@@ -10,7 +10,11 @@
 .inputDiscount {
   flex: 1;
   padding: 0.5rem;
-  background-color: 99D98C;
+  background-color: #99d98c;
+  border: none;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
 }
 
 .inputDiscount::placeholder {
@@ -24,6 +28,8 @@
   cursor: pointer;
   border: none;
   border-radius: 8px;
+  height: 40px;
+  font-weight: 600;
 }
 
 .discountMessage {
