@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import DiscountCode from "../../components/DiscountCode/DiscountCode";
 import styles from "./Checkout.module.css";
 
@@ -49,14 +50,23 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
         ) : (
           cart.map((item, index) => (
             <div key={index} className={styles.cartItem}>
-              <span>{item.title}</span>
-              <span>{item.price} DKK</span>
-              <button
-                onClick={() => removeFromCart(index)}
-                className={styles.removeBtn}
-              >
-                Fjern
-              </button>
+              <div className={styles.cartInfo}>
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className={styles.cartImage}
+                />
+                <span>{item.title}</span>
+              </div>
+              <div className={styles.purchaseInfo}>
+                <span>{item.price} DKK</span>
+                <button
+                  onClick={() => removeFromCart(index)}
+                  className={styles.removeBtn}
+                >
+                  <MdOutlineRemoveShoppingCart size={16} />
+                </button>
+              </div>
             </div>
           ))
         )}
