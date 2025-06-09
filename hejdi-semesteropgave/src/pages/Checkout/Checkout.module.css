@@ -2,10 +2,14 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 10px;
   background-color: white;
   color: black;
+}
+
+h1 {
+  text-align: center;
 }
 
 .cartItem {
@@ -24,6 +28,7 @@
 }
 
 .cartInfo {
+  max-width: 200px;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -35,6 +40,7 @@
   width: 40px;
   border: none;
   border-radius: 50%;
+  margin-right: 0.5rem;
 }
 
 .purchaseInfo {
@@ -80,6 +86,7 @@ input::placeholder {
   border: none;
   border-radius: 8px;
   max-width: 900px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -89,15 +96,27 @@ input::placeholder {
 .totalTitles {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  justify-content: center;
+  align-items: start;
+  padding: 0.5rem 1rem;
+}
+
+.totalTitles p {
+  margin: 0.5rem;
+  text-align: left;
 }
 
 .totalPrice {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  justify-content: center;
+  align-items: end;
+  padding: 0.5rem 1rem;
+}
+
+.totalPrice p {
+  margin: 0.5rem;
+  text-align: right;
 }
 
 .orderBtn {
@@ -113,4 +132,10 @@ input::placeholder {
 .error {
   color: #d45252;
   font-size: 0.85rem;
+}
+
+@media (min-width: 500px) {
+  .cartInfo {
+    max-width: none;
+  }
 }
