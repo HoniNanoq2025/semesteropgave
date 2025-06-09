@@ -36,7 +36,11 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
   };
 
   const onSubmit = (data) => {
-    alert(`Tak for din ordre, ${data.name}! Total: ${calculateTotal()} kr.`);
+    alert(
+      `Tak for din ordre, ${data.name}! Total: ${calculateTotal().toFixed(
+        2
+      )} kr.`
+    );
     // Clear cart after successful order
     clearCart();
   };
@@ -125,14 +129,14 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
                 </p>
               </div>
               <div className={styles.totalPrice}>
-                <p>{calculateSubtotal()} kr.</p>
+                <p>{calculateSubtotal().toFixed(2)} kr.</p>
                 <p>
                   {discount?.type === "freeShipping"
-                    ? "0 kr."
-                    : `${shippingFee} kr.`}
+                    ? "0.00 kr."
+                    : `${shippingFee.toFixed(2)} kr.`}
                 </p>
                 <p>
-                  <strong>{calculateTotal()} kr.</strong>
+                  <strong>{calculateTotal().toFixed(2)} kr.</strong>
                 </p>
               </div>
             </div>
