@@ -15,6 +15,7 @@ export default function App() {
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
 
+  // Load favorites from localStorage
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
     if (savedFavorites) {
@@ -40,6 +41,7 @@ export default function App() {
     }
   }, []);
 
+  // Save favorites to localStorage
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);

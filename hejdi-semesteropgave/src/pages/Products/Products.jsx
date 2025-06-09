@@ -3,10 +3,6 @@ import ProductList from "../../components/ProductList/ProductList";
 import FilterPanel from "../../components/FilterPanel/FilterPanel";
 import Pagination from "../../components/Pagination/Pagination";
 import styles from "./Products.module.css";
-import {
-  getFavoritesFromStorage,
-  saveFavoritesToStorage,
-} from "../../utils/localStorage";
 
 export default function Products({ addToCart, favorites, toggleFavorites }) {
   const [products, setProducts] = useState([]);
@@ -17,9 +13,6 @@ export default function Products({ addToCart, favorites, toggleFavorites }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOption, setSortOption] = useState("");
-
-  //Favoritter med localStorage
-  const [favoriteIds, setFavoriteIds] = useState(getFavoritesFromStorage);
 
   //Pagination States
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,17 +40,7 @@ export default function Products({ addToCart, favorites, toggleFavorites }) {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    saveFavoritesToStorage(favoriteIds);
-  }, [favoriteIds]);
-
   const categories = [...new Set(products.map((p) => p.category))];
-
-  function toggleFavorite(id) {
-    setFavoriteIds((favIds) =>
-      favIds.includes(id) ? favIds.filter((fid) => fid !== id) : [...favIds, id]
-    );
-  }
 
   const filteredProducts = products
     .filter((p) => p.title.toLowerCase().includes(searchTerm.toLowerCase()))
