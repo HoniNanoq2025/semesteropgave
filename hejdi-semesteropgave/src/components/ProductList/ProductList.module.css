@@ -1,20 +1,82 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.productList {
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
+  gap: 1.5rem;
+}
+
 .card {
   width: 200px;
-  height: 265px;
+  height: 290px;
   background-color: #d9ed92;
   border: none;
   border-radius: 8px;
   padding: 0.5rem;
 }
 
+.rating {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 .imageContainer {
-  width: 180px;
-  height: 150px;
+  position: relative;
+  width: 198px;
+  height: 145px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .favoriteBtn {
+  position: absolute;
+  bottom: -10px;
+  right: 5px;
   border: none;
   border-radius: 50%;
   padding: 0.5rem;
   background-color: white;
+  cursor: pointer;
+}
+
+.productTitle {
+  font-weight: 300;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.addCartBtn {
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  padding: 0 1rem;
+  background-color: white;
+}
+
+@media (min-width: 900px) {
+  .productList {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
 }

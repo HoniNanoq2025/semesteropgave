@@ -1,0 +1,47 @@
+.filterPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterPanel .input {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 200px;
+  padding: 0 0.5rem;
+}
+
+.filterPanel .input:active {
+  outline: 184e77;
+}
+
+.filterPanel .select {
+  height: 40px;
+  width: 200px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  background-color: #52b69a;
+  color: white;
+}
+
+@media (min-width: 900px) {
+  .filterPanel {
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem auto;
+    gap: 4rem;
+  }
+
+  .filterPanel .input {
+    width: 284px;
+  }
+
+  .filterPanel .select {
+    width: 150px;
+  }
+}

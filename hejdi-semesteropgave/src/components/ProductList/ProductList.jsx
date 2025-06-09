@@ -26,7 +26,14 @@ export default function ProductList({
                 <div className={styles.imageContainer}>
                   <div
                     className={styles.image}
-                    style={{ backgroundImage: prod.images }}
+                    style={{
+                      backgroundImage: `url(${
+                        prod.images[0] || prod.thumbnail
+                      })`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
                     role="img"
                     aria-label={prod.title}
                   />
@@ -44,7 +51,7 @@ export default function ProductList({
                     {isFavorite ? "❤️" : "🤍"}
                   </button>
                 </div>
-                <h4 className={styles.productTitle}>{prod.title}</h4>
+                <h5 className={styles.productTitle}>{prod.title}</h5>
                 <div className={styles.priceContainer}>
                   <h4 className={styles.price}>
                     <strong>{prod.price} DKK</strong>
@@ -53,7 +60,7 @@ export default function ProductList({
                     onClick={() => addToCart(prod)}
                     className={styles.addCartBtn}
                   >
-                    <FaShoppingCart size={28} />
+                    <FaShoppingCart size={16} />
                   </button>
                 </div>
               </div>

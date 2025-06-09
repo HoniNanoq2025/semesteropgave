@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from ".DiscountCode.module.css";
+import styles from "./DiscountCode.module.css";
 
 const validCodes = {
   RABAT10: { type: "percent", value: "10" },

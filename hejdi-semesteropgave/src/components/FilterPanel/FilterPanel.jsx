@@ -42,6 +42,8 @@ export default function FilterPanel({
         <option value="priceDesc">Pris (Høj til lav)</option>
         <option value="alphaAsc">A-Å</option>
         <option value="alphaDesc">Å-A</option>
+        <option value="ratingHigh">Rating (Høj til lav)</option>
+        <option value="ratingLow">Rating (Lav til høj)</option>
       </select>
     </section>
   );
