@@ -58,7 +58,7 @@ export default function ProductCard({ favorites, toggleFavorites, addToCart }) {
           </button>
         </div>
         <div className={styles.productTags}>
-          <p className={styles.tags}>{product.tags}</p>
+          <p className={styles.tags}>{product.tags.join(", ")}</p>
         </div>
         <div className={styles.productDetail}>
           <p>{product.description}</p>

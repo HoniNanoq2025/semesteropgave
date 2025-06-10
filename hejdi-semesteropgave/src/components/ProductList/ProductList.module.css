@@ -31,6 +31,8 @@
   position: relative;
   width: 198px;
   height: 145px;
+  background-color: rgba(255, 255, 255, 0.573);
+  border-radius: 8px;
 }
 
 .image {
@@ -43,12 +45,16 @@
 .favoriteBtn {
   position: absolute;
   bottom: -10px;
-  right: 5px;
-  border: none;
+  right: -5px;
+  border: 1px solid #34a0a4;
   border-radius: 50%;
   padding: 0.5rem;
   background-color: white;
   cursor: pointer;
+}
+
+.favoriteBtn:hover {
+  background-color: #34a0a4;
 }
 
 .productTitle {
@@ -73,8 +79,6 @@
   text-decoration: underline;
 }
 
-
-
 .priceContainer {
   display: flex;
   flex-direction: row;
@@ -95,7 +99,7 @@
 .addCartBtn:hover,
 .addCartBtn:active {
   background-color: #1a759f;
-  color: #d9ed92;
+  color: white;
 }
 
 @media (min-width: 900px) {
