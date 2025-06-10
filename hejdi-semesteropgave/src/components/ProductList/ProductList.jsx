@@ -22,7 +22,7 @@ export default function ProductList({
             <div key={prod.id} className={styles.productItem}>
               <div className={styles.card}>
                 <div className={styles.rating}>
-                  <IoMdStar /> {prod.rating}
+                  <IoMdStar color="yellow" /> {prod.rating}
                 </div>
                 <div className={styles.imageContainer}>
                   <div
