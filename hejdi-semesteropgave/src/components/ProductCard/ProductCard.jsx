@@ -31,7 +31,7 @@ export default function ProductCard({ favorites, toggleFavorites, addToCart }) {
           <span className={styles.category}>{product.category}</span>
         </div>
         <div className={styles.detailHeader}>
-          <h4>{product.title}</h4>
+          <h3>{product.title}</h3>
         </div>
         <div className={styles.detailImageContainer}>
           <div
@@ -61,11 +61,13 @@ export default function ProductCard({ favorites, toggleFavorites, addToCart }) {
           <p className={styles.tags}>{product.tags.join(", ")}</p>
         </div>
         <div className={styles.productDetail}>
-          <p>{product.description}</p>
+          <p className={styles.description}>{product.description}</p>
         </div>
         <div className={styles.productPricing}>
           <div>
-            <h5>{product.price} DKK</h5>
+            <p>
+              <strong>{product.price} DKK</strong>
+            </p>
           </div>
           <div>
             <p>{product.availabilityStatus}</p>
