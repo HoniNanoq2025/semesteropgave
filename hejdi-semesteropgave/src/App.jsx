@@ -10,22 +10,19 @@ import Checkout from "./pages/Checkout/Checkout";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
+import {
+  getFavoritesFromStorage,
+  saveFavoritesToStorage,
+} from "./utils/localStorage";
 
 export default function App() {
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
 
-  // Load favorites from localStorage
+  // Load favorites from localStorage using utility function
   useEffect(() => {
-    const savedFavorites = localStorage.getItem("favorites");
-    if (savedFavorites) {
-      try {
-        setFavorites(JSON.parse(savedFavorites));
-      } catch (error) {
-        console.error("Error parsing saved favorites:", error);
-        setFavorites([]);
-      }
-    }
+    const savedFavorites = getFavoritesFromStorage();
+    setFavorites(savedFavorites);
   }, []);
 
   // Load cart from localStorage
@@ -41,9 +38,9 @@ export default function App() {
     }
   }, []);
 
-  // Save favorites to localStorage
+  // Save favorites to localStorage using utility function
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    saveFavoritesToStorage(favorites);
   }, [favorites]);
 
   // Save cart to localStorage
