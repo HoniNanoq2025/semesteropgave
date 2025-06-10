@@ -69,7 +69,7 @@ link.active {
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(24, 78, 119, 0.88);
+  background-color: rgba(24, 78, 119, 0.92);
   display: flex;
   flex-direction: column;
   justify-content: center;
