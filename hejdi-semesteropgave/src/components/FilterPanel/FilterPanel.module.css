@@ -40,8 +40,7 @@
 @media (min-width: 900px) {
   .filterPanel {
     flex-direction: row;
-    justify-content: center;
-    margin: 1rem auto;
+    justify-content: space-between;
     gap: 4rem;
   }
 
