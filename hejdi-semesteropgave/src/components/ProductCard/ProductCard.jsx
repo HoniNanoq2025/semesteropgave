@@ -79,7 +79,30 @@ export default function ProductCard({ favorites, toggleFavorites, addToCart }) {
         </button>
       </div>
 
-
+      <div className={styles.productReviews}>
+        <h3>Anmeldelser</h3>
+        {product.reviews && product.reviews.length > 0 ? (
+          <div className={styles.reviewsList}>
+            {product.reviews.map((review, index) => (
+              <div key={index} className={styles.reviewItem}>
+                <div className={styles.reviewDetail}>
+                  <div className={styles.reviewer}>
+                    <p>{review.reviewerName}</p>
+                  </div>
+                  <div className={styles.rating}>
+                    <span>{review.rating}</span>
+                  </div>
+                </div>
+                <div className={styles.reviewComment}>
+                  <p className={styles.comment}>{review.comment}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.noReviews}>Ingen Anmeldelser endnu</p>
+        )}
+      </div>
     </div>
   );
 }
