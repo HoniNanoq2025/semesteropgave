@@ -13,6 +13,8 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   width: 200px;
   height: 290px;
   background-color: #d9ed92;
@@ -29,10 +31,11 @@
 
 .imageContainer {
   position: relative;
-  width: 198px;
-  height: 145px;
+  width: 200px;
+  height: 170px;
   background-color: rgba(255, 255, 255, 0.573);
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .image {
@@ -55,6 +58,13 @@
 
 .favoriteBtn:hover {
   background-color: #34a0a4;
+}
+
+.detailsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .productTitle {

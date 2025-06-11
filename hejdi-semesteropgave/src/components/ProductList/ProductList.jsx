@@ -22,7 +22,7 @@ export default function ProductList({
             <div key={prod.id} className={styles.productItem}>
               <div className={styles.card}>
                 <div className={styles.rating}>
-                  <IoMdStar color="yellow" /> {prod.rating}
+                  <IoMdStar color="#52B69A" /> {prod.rating}
                 </div>
                 <div className={styles.imageContainer}>
                   <div
@@ -52,22 +52,24 @@ export default function ProductList({
                     {isFavorite ? "❤️" : "🤍"}
                   </button>
                 </div>
-                <Link
-                  to={`/products/${prod.id}`}
-                  className={styles.productTitleLink}
-                >
-                  <h5 className={styles.productTitle}>{prod.title}</h5>
-                </Link>
-                <div className={styles.priceContainer}>
-                  <h4 className={styles.price}>
-                    <strong>{prod.price} DKK</strong>
-                  </h4>
-                  <button
-                    onClick={() => addToCart(prod)}
-                    className={styles.addCartBtn}
+                <div className={styles.detailsContainer}>
+                  <Link
+                    to={`/products/${prod.id}`}
+                    className={styles.productTitleLink}
                   >
-                    <FaShoppingCart size={16} />
-                  </button>
+                    <h5 className={styles.productTitle}>{prod.title}</h5>
+                  </Link>
+                  <div className={styles.priceContainer}>
+                    <h4 className={styles.price}>
+                      <strong>{prod.price} DKK</strong>
+                    </h4>
+                    <button
+                      onClick={() => addToCart(prod)}
+                      className={styles.addCartBtn}
+                    >
+                      <FaShoppingCart size={16} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
