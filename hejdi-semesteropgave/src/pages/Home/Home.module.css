@@ -1,0 +1,28 @@
+.homeContainer {
+  padding: 2rem;
+}
+
+.goToProducts {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.goToProductsBtn {
+  background-color: #1a759f;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: inline-block;
+}
+
+.goToProductsBtn:hover {
+  background-color: #145a7a;
+}
