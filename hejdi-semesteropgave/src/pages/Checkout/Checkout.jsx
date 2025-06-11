@@ -50,7 +50,13 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
       <h1>Kurv</h1>
       <div className={styles.cart}>
         {cart.length === 0 ? (
-          <p>Din kurv er tom</p>
+          <div className={styles.emptyCartMsg}>
+            <p>Din kurv er tom</p>
+            <p>
+              Gå til <a href="/products">Produkter</a> eller{" "}
+              <a href="/favorites">Favoritter</a> for at tilføje nogle!
+            </p>
+          </div>
         ) : (
           cart.map((item, index) => (
             <div key={index} className={styles.cartItem}>
@@ -85,13 +91,13 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
             onSubmit={handleSubmit(onSubmit)}
             className={styles.checkoutForm}
           >
-            <label>Navn</label>
+            <label>Fornavn</label>
             <input
               type="text"
               {...register("name", { required: true })}
               placeholder="Fornavn..."
             />
-            {errors.name && <p className={styles.error}>Navn er påkrævet</p>}
+            {errors.name && <p className={styles.error}>Fornavn er påkrævet</p>}
 
             <label>Efternavn</label>
             <input
@@ -140,9 +146,11 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
                 </p>
               </div>
             </div>
-            <button type="submit" className={styles.orderBtn}>
-              Køb
-            </button>
+            <div className={styles.buttonPlacement}>
+              <button type="submit" className={styles.orderBtn}>
+                Køb
+              </button>
+            </div>
           </form>
         </>
       )}
