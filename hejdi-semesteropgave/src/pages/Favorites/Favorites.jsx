@@ -93,7 +93,7 @@ export default function Favorites({ favorites, toggleFavorites, addToCart }) {
 
   return (
     <div className={styles.favoritesPage}>
-      <h1 className={styles.favHeading}>Favoritter</h1>
+      <h1 className={styles.favHeading}>Dine favoritter</h1>
       <div className={styles.filterPanel}>
         <FilterFavorites
           selectedCategory={selectedCategory}
@@ -107,7 +107,8 @@ export default function Favorites({ favorites, toggleFavorites, addToCart }) {
         <div className={styles.noFavorites}>
           <p>Du har ingen favoritter endnu.</p>
           <p>
-            Gå til <a href="/products">Produkter</a> for at tilføje nogle!
+            Gå til <a href="/products">Produkter</a> for at tilføje dine
+            favorit-produkter!
           </p>
         </div>
       ) : (

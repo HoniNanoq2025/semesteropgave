@@ -4,18 +4,22 @@
   align-items: center;
 }
 
-.noFavorites a:link{
-  color: #184E77;
+.noFavorites a {
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.noFavorites a:visited{
-  color: #d45252;
+.noFavorites a:link {
+  color: #184e77;
 }
 
-.noFavorites a:hover{
-  color:#34A0A4;
+.noFavorites a:visited {
+  color: #184e77;
 }
 
+.noFavorites a:hover {
+  color: #34a0a4;
+}
 
 .filterPanel {
   max-width: 100%;

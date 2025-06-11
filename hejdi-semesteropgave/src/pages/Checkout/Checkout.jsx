@@ -54,7 +54,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
             <p>Din kurv er tom</p>
             <p>
               Gå til <a href="/products">Produkter</a> eller{" "}
-              <a href="/favorites">Favoritter</a> for at tilføje nogle!
+              <a href="/favorites">Favoritter</a> for at tilføje produkter!
             </p>
           </div>
         ) : (
