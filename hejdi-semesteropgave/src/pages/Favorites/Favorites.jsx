@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import FavoriteCardList from "../../components/FavoriteCardList/FavoriteCardList";
+import FilterFavorites from "../../components/FilterFavorites/FilterFavorites";
 import styles from "./Favorites.module.css";
 
 export default function Favorites({ favorites, toggleFavorites, addToCart }) {
   const [favoriteProducts, setFavoriteProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortOption, setSortOption] = useState("");
 
   useEffect(() => {
     const fetchFavoriteProducts = async () => {
@@ -58,9 +62,47 @@ export default function Favorites({ favorites, toggleFavorites, addToCart }) {
     );
   }
 
+  // Get categories from favoriteProducts, not favorites
+  const categories = [
+    ...new Set(favoriteProducts.map((product) => product.category)),
+  ];
+
+  // Filter and sort favoriteProducts, not favorites
+  const filteredFavorites = favoriteProducts
+    .filter((product) =>
+      selectedCategory ? product.category === selectedCategory : true
+    )
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "priceAsc":
+          return a.price - b.price;
+        case "priceDesc":
+          return b.price - a.price;
+        case "alphaAsc":
+          return a.title.localeCompare(b.title);
+        case "alphaDesc":
+          return b.title.localeCompare(a.title);
+        case "ratingHigh":
+          return b.rating - a.rating;
+        case "ratingLow":
+          return a.rating - b.rating;
+        default:
+          return 0;
+      }
+    });
+
   return (
     <div className={styles.favoritesPage}>
       <h1 className={styles.favHeading}>Favoritter</h1>
+      <div className={styles.filterPanel}>
+        <FilterFavorites
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          categories={categories}
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+        />
+      </div>
       {favoriteProducts.length === 0 ? (
         <div className={styles.noFavorites}>
           <p>Du har ingen favoritter endnu.</p>
@@ -70,7 +112,7 @@ export default function Favorites({ favorites, toggleFavorites, addToCart }) {
         </div>
       ) : (
         <FavoriteCardList
-          products={favoriteProducts}
+          products={filteredFavorites}
           favoriteIds={favorites}
           toggleFavorite={toggleFavorites}
           addToCart={addToCart}

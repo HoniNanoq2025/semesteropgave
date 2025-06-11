@@ -1,0 +1,28 @@
+.filterSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-around;
+  gap: 0.5rem;
+}
+
+.filterSection .select {
+  height: 40px;
+  width: 200px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  background-color: #52b69a;
+  color: white;
+  font-family: "Poppins";
+}
+
+@media (min-width: 900px) {
+  .filterSection {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    max-width: 900px;
+  }
+}
