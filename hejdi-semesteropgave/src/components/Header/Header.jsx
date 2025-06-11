@@ -18,18 +18,26 @@ export default function Header() {
       <div className={styles.logo}>MyShop</div>
 
       <nav className={styles.desktopNav}>
-        <NavLink to="/" className={styles.link}>
-          <AiFillHome size={28} />
-        </NavLink>
-        <NavLink to="/products" className={styles.link}>
-          Produkter
-        </NavLink>
-        <NavLink to="/about-contact#about" className={styles.link}>
-          Om os
-        </NavLink>
-        <NavLink to="about-contact#contact" className={styles.link}>
-          Kontakt os
-        </NavLink>
+        {shouldShow("/") && (
+          <NavLink to="/" className={styles.link}>
+            <AiFillHome size={28} />
+          </NavLink>
+        )}
+        {shouldShow("/products") && (
+          <NavLink to="/products" className={styles.link}>
+            Produkter
+          </NavLink>
+        )}
+        {shouldShow("/about-contact") && (
+          <NavLink to="/about-contact#about" className={styles.link}>
+            Om os
+          </NavLink>
+        )}
+        {shouldShow("/about-contact") && (
+          <NavLink to="about-contact#contact" className={styles.link}>
+            Kontakt os
+          </NavLink>
+        )}
         {shouldShow("/favorites") && (
           <NavLink to="favorites" className={styles.favLink}>
             <FaHeart size={28} />
