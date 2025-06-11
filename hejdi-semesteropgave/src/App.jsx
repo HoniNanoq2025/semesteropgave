@@ -77,7 +77,16 @@ export default function App() {
       <Header />
       <main className={styles.main}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                addToCart={addToCart}
+                favorites={favorites}
+                toggleFavorites={toggleFavorites}
+              />
+            }
+          />
           <Route path="/about-contact" element={<AboutContact />} />
           <Route
             path="/products"
