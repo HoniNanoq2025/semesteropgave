@@ -68,13 +68,6 @@ export default function Header() {
             HJEM
           </NavLink>
           <NavLink
-            to="/about-contact#about"
-            className={styles.mobileLink}
-            onClick={handleLinkClick}
-          >
-            OM OS
-          </NavLink>
-          <NavLink
             to="/products"
             className={styles.mobileLink}
             onClick={handleLinkClick}
@@ -82,11 +75,11 @@ export default function Header() {
             PRODUKTER
           </NavLink>
           <NavLink
-            to="/about-contact#contact"
+            to="/cart"
             className={styles.mobileLink}
             onClick={handleLinkClick}
           >
-            KONTAKT OS
+            KURV
           </NavLink>
           <NavLink
             to="/favorites"
@@ -94,6 +87,20 @@ export default function Header() {
             onClick={handleLinkClick}
           >
             FAVORITTER
+          </NavLink>
+          <NavLink
+            to="/about-contact#about"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
+            OM OS
+          </NavLink>
+          <NavLink
+            to="/about-contact#contact"
+            className={styles.mobileLink}
+            onClick={handleLinkClick}
+          >
+            KONTAKT OS
           </NavLink>
         </nav>
       </div>
