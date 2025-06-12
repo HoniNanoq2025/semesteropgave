@@ -29,7 +29,7 @@ export default function CookiePolicy() {
             kan ikke indeholde skadelig kode som f.eks. virus.
           </p>
           <p className={styles.policyParagraph}>
-            Det er muligt at slette eller blokere for cookies.{" "}
+            Det er muligt at slette eller blokere for cookies.
           </p>
           <p className={styles.policyParagraph}>
             Hvis du sletter eller blokerer cookies vil annoncer kunne blive
@@ -111,7 +111,7 @@ export default function CookiePolicy() {
             videregives til tredjeparter i det omfang disse oplysninger er
             kendt. Du kan se hvilke tredjeparter, der er tale om, i afsnittet om
             "Cookies" ovenfor. Oplysningerne anvendes til målretning af
-            annoncering.{" "}
+            annoncering.
           </p>
           <p className={styles.policyParagraph}>
             Vi benytter herudover en række tredjeparter til opbevaring og
@@ -149,7 +149,7 @@ export default function CookiePolicy() {
         <div className={styles.policyText}>
           <h4>Udgiver</h4>
           <p className={styles.policyParagraph}>
-            Websitet ejes og publiceres af:{" "}
+            Websitet ejes og publiceres af:
           </p>
         </div>
         <div>
