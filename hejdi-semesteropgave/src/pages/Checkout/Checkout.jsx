@@ -4,25 +4,31 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import DiscountCode from "../../components/DiscountCode/DiscountCode";
 import styles from "./Checkout.module.css";
 
+// Checkout-komponent, der modtager tre props: cart (array med produkter), removeFromCart (funktion til at fjerne et produkt), og clearCart (funktion til at rydde kurven)
 export default function Checkout({ cart = [], removeFromCart, clearCart }) {
+  // useForm hook giver adgang til register (til input-binding), handleSubmit (til form-submission) og errors (til valideringsfejl)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // useState hook bruges til at holde styr på en eventuel rabatkode (discount)
   const [discount, setDiscount] = useState(null);
 
+  // Fast fragtpris
   const shippingFee = 50;
 
-  // Calculate subtotal from cart items
+  // Funktion til at beregne subtotal (uden fragt og rabat)
   const calculateSubtotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
 
+  // Funktion til at beregne den endelige totalpris inkl. fragt og evt. rabat
   const calculateTotal = () => {
     const subtotal = calculateSubtotal();
     let total = subtotal + shippingFee;
 
+    // Anvendelse af rabat, afhængig af rabattype: procent, fast beløb eller gratis fragt
     if (discount) {
       if (discount.type === "percent") {
         total -= (subtotal * discount.value) / 100;
@@ -32,9 +38,11 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
         total -= shippingFee;
       }
     }
+    // Returnér aldrig en negativ total
     return total > 0 ? total : 0;
   };
 
+  // onSubmit funktion, der bliver kaldt ved form submission. Viser en bekræftelse og rydder kurven.
   const onSubmit = (data) => {
     alert(
       `Tak for din ordre, ${data.name}! Total: ${calculateTotal().toFixed(
@@ -42,13 +50,15 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
       )} kr.`
     );
     // Clear cart after successful order
-    clearCart();
+    clearCart(); // Kalder clearCart-prop for at tømme kurven
   };
 
   return (
     <div className={styles.checkoutContainer}>
       <h1>Kurv</h1>
+
       <div className={styles.cart}>
+        {/* Viser enten en tom kurv eller kort over produkterne i kurven */}
         {cart.length === 0 ? (
           <div className={styles.emptyCartMsg}>
             <p>Din kurv er tom</p>
@@ -58,6 +68,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
             </p>
           </div>
         ) : (
+          // Map funktion til at vise hvert produkt i kurven
           cart.map((item, index) => (
             <div key={index} className={styles.cartItem}>
               <div className={styles.cartInfo}>
@@ -71,7 +82,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
               <div className={styles.purchaseInfo}>
                 <span>{item.price} DKK</span>
                 <button
-                  onClick={() => removeFromCart(index)}
+                  onClick={() => removeFromCart(index)} // Kalder removeFromCart prop ved klik
                   className={styles.removeBtn}
                 >
                   <MdOutlineRemoveShoppingCart size={16} />
