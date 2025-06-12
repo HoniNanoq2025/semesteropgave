@@ -6,9 +6,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
         <div className={styles.location}>
-          <p>
+          <NavLink to="/" className={styles.footerLink}>
             <strong>MyShop</strong>
-          </p>
+          </NavLink>
           <p>Skaldehøjvej 2</p>
           <p>8800 Viborg</p>
         </div>
