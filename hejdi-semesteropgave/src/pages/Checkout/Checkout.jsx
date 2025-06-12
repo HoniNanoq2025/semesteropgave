@@ -5,6 +5,7 @@ import DiscountCode from "../../components/DiscountCode/DiscountCode";
 import styles from "./Checkout.module.css";
 
 // Checkout-komponent, der modtager tre props: cart (array med produkter), removeFromCart (funktion til at fjerne et produkt), og clearCart (funktion til at rydde kurven)
+// Props har default destructuring med fallback-værdi [] for cart
 export default function Checkout({ cart = [], removeFromCart, clearCart }) {
   // useForm hook giver adgang til register (til input-binding), handleSubmit (til form-submission) og errors (til valideringsfejl)
   const {
@@ -19,6 +20,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
   const shippingFee = 50;
 
   // Funktion til at beregne subtotal (uden fragt og rabat)
+  // Bruger array.reduce() til at summere alle item.price værdier
   const calculateSubtotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
@@ -31,10 +33,13 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
     // Anvendelse af rabat, afhængig af rabattype: procent, fast beløb eller gratis fragt
     if (discount) {
       if (discount.type === "percent") {
+        // Procent-rabat: fratrækker procent af subtotal
         total -= (subtotal * discount.value) / 100;
       } else if (discount.type === "fixed") {
+        // Fast beløbs-rabat: trækker fast værdi fra total
         total -= discount.value;
       } else if (discount.type === "freeShipping") {
+        // Gratis fragt: trækker shippingFee fra total
         total -= shippingFee;
       }
     }
@@ -44,12 +49,13 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
 
   // onSubmit funktion, der bliver kaldt ved form submission. Viser en bekræftelse og rydder kurven.
   const onSubmit = (data) => {
+    // Viser confirmation alert
     alert(
       `Tak for din ordre, ${data.name}! Total: ${calculateTotal().toFixed(
         2
       )} kr.`
     );
-    // Clear cart after successful order
+    // Ryd cart after successful order
     clearCart(); // Kalder clearCart-prop for at tømme kurven
   };
 
@@ -58,6 +64,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
       <h1>Kurv</h1>
 
       <div className={styles.cart}>
+        {/* Conditional rendering baseret på array længde */}
         {/* Viser enten en tom kurv eller kort over produkterne i kurven */}
         {cart.length === 0 ? (
           <div className={styles.emptyCartMsg}>
@@ -68,7 +75,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
             </p>
           </div>
         ) : (
-          // Map funktion til at vise hvert produkt i kurven
+          // Map funktion til at render hvert produkt/item i kurven
           cart.map((item, index) => (
             <div key={index} className={styles.cartItem}>
               <div className={styles.cartInfo}>
@@ -93,21 +100,27 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
         )}
       </div>
 
+      {/* Conditional rendering kun når cart har items */}
+      {/*Hvis cart.length > 0 er true (kurven indeholder items) → vis rabatkode og formular
+        Hvis cart.length > 0 er false (kurven er tom) → vis intet*/}
       {cart.length > 0 && (
         <>
+          {/* Child-komponent til håndtering af rabatkoder. setDiscount er callback-funktionen til at sætte state. */}
           <div>
             <DiscountCode onApply={setDiscount} />
           </div>
+          {/* Formular til kundeinformation, håndteret med react-hook-form */}
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)} // handleSubmit wrapper onSubmit for at håndtere validering
             className={styles.checkoutForm}
           >
             <label>Fornavn</label>
             <input
               type="text"
-              {...register("name", { required: true })}
+              {...register("name", { required: true })} // register binder input til useForm og tilføjer validering
               placeholder="Fornavn..."
             />
+            {/* Error message der kun vises hvis validation slår fejl */}
             {errors.name && <p className={styles.error}>Fornavn er påkrævet</p>}
 
             <label>Efternavn</label>
@@ -137,6 +150,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
               <p className={styles.error}>Adresse er påkrævet</p>
             )}
 
+            {/* Sektion for visning af priser: subtotal, fragt og total */}
             <div className={styles.checkoutPrice}>
               <div className={styles.totalTitles}>
                 <p>Subtotal:</p>
@@ -146,8 +160,13 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
                 </p>
               </div>
               <div className={styles.totalPrice}>
+                {/* .toFixed(2) = max 2 decimaler efter punktumet */}
                 <p>{calculateSubtotal().toFixed(2)} kr.</p>
                 <p>
+                  {/* condition ?(hvis) valueIfTrue :(ellers) valueIfFalse */}
+                  {/*Tjek om discount eksisterer AND om dens type property er lig med "freeShipping" 
+                  Hvis JA → vis "0.00 kr." (fragtpris)
+                  Hvis NEJ → Vis faktisk fragtpris (f.eks., "50.00 kr.")*/}
                   {discount?.type === "freeShipping"
                     ? "0.00 kr."
                     : `${shippingFee.toFixed(2)} kr.`}
@@ -157,6 +176,7 @@ export default function Checkout({ cart = [], removeFromCart, clearCart }) {
                 </p>
               </div>
             </div>
+            {/* Køb-knap der indsender formularen */}
             <div className={styles.buttonPlacement}>
               <button type="submit" className={styles.orderBtn}>
                 Køb
