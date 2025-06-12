@@ -19,6 +19,9 @@ export default function Footer() {
           <NavLink to="/cookie-policy" className={styles.footerLink}>
             Cookie & privatlivspolitik
           </NavLink>
+          <NavLink to="/personal-data-policy" className={styles.footerLink}>
+            Persondatapolitik
+          </NavLink>
         </div>
       </div>
     </footer>
