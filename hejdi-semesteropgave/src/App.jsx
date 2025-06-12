@@ -7,6 +7,7 @@ import Products from "./pages/Products/Products";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Favorites from "./pages/Favorites/Favorites";
 import Checkout from "./pages/Checkout/Checkout";
+import CookiePolicy from "./pages/CookiePolicy/CookiePolicy";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
@@ -128,6 +129,7 @@ export default function App() {
               />
             }
           />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
       </main>
       <CookieBanner />
