@@ -44,8 +44,8 @@ export default function DiscountCode({ onApply }) {
       <div className={styles.inputDiscountGroup}>
         <input
           type="text"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
+          value={code} // Binder input værdi til code state
+          onChange={(e) => setCode(e.target.value)} // Opdaterer state når bruger skriver
           placeholder="Indtast rabatkode"
           className={styles.inputDiscount}
         />
