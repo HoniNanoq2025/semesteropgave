@@ -28,7 +28,7 @@ const CookieBanner = () => {
     <div className={styles.cookieBanner}>
       <p className={styles.message}>
         Vi bruger cookies for at forbedre din oplevelse. Ved at fortsætte med at
-        benytte vores side, accepterer du vores brug af cookies i 90 dage.
+        benytte vores side, accepterer du vores brug af cookies i 90 dage. Læs mere om vores Cookie og privatlivspolitik.
       </p>
       <div className={styles.cookieButtons}>
         <button className={styles.acceptBtn} onClick={handleAccept}>
