@@ -22,6 +22,9 @@ export default function Footer() {
           <NavLink to="/personal-data-policy" className={styles.footerLink}>
             Persondatapolitik
           </NavLink>
+          <NavLink to="/terms-conditions" className={styles.footerLink}>
+            Handelsbetingelser
+          </NavLink>
         </div>
       </div>
     </footer>

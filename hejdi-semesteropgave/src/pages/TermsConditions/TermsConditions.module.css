@@ -1,0 +1,33 @@
+.policyPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.policyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.policyHeader {
+  width: 100%;
+  text-align: center;
+}
+
+.policyText {
+  text-align: left;
+}
+
+.policyParagraph {
+  margin-bottom: 0.5rem;
+}
+
+.address {
+  margin: 0 auto;
+}

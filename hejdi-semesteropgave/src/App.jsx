@@ -9,6 +9,7 @@ import Favorites from "./pages/Favorites/Favorites";
 import Checkout from "./pages/Checkout/Checkout";
 import CookiePolicy from "./pages/CookiePolicy/CookiePolicy";
 import PersonalDataPolicy from "./pages/PersonalDataPolicy/PersonalDataPolicy";
+import TermsConditions from "./pages/TermsConditions/TermsConditions";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
@@ -135,6 +136,7 @@ export default function App() {
             path="/personal-data-policy"
             element={<PersonalDataPolicy />}
           />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
         </Routes>
       </main>
       <CookieBanner />
