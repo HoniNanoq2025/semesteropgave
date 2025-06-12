@@ -275,7 +275,9 @@ export default function TermsConditions() {
           </p>
           <p className={styles.address}>Carl Jacobsens Vej 35</p>
           <p className={styles.address}>2500 Valby</p>
-          <p className={styles.address}>Link: www.forbrug.dk</p>
+          <p className={styles.address}>
+            Link: <a href="www.forbrug.dk">www.forbrug.dk</a>
+          </p>
         </div>
 
         <div className={styles.policyText}>
@@ -284,8 +286,10 @@ export default function TermsConditions() {
             klage i EU Kommissionens online klageplatform.
           </p>
           <p className={styles.policyParagraph}>
-            Platformen findes her:
-            https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=DA
+            Platformen findes her:{" "}
+            <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=DA">
+              https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=DA
+            </a>
           </p>
           <p className={styles.policyParagraph}>
             Angiver du en klage her, skal du oplyse vores E-mail adresse:
