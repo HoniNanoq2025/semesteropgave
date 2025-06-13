@@ -6,7 +6,7 @@ import styles from "./Products.module.css";
 
 /**
  * Products komponenten - hovedkomponent for produktsiden
- * @param {Object} props - Component props indeholder:
+ * @param {Object} props - forvententet Component objekter er props
  * @param {Function} addToCart - Callback function til at tilføje produkter til kurven
  * @param {Array} favorites - Array med favorit produkt IDs
  * @param {Function} toggleFavorites - Callback function til at toggle favorit status
