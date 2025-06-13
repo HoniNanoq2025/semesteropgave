@@ -3,10 +3,10 @@ import styles from "./FilterFavorites.module.css";
 // Funktionel komponent til filtrering og sortering af favoritter
 export default function FilterFavorites({
   selectedCategory, // prop: den aktuelt valgte kategori
-  setSelectedCategory, // prop: state setter function til at opdatere valgte kategori
+  setSelectedCategory, // prop: state sætter function til at opdatere valgte kategori
   categories, // prop: array med alle tilgængelige kategorier
   sortOption, // prop: den aktuelt valgte sorteringsmulighed
-  setSortOption, // prop: state setter function til at opdatere sortering
+  setSortOption, // prop: state sætter funktion til at opdatere sortering
 }) {
   return (
     <section className={styles.filterSection}>
