@@ -38,7 +38,7 @@ export default function Products({ addToCart, favorites, toggleFavorites }) {
           "https://dummyjson.com/products?limit=150"
         );
 
-        // Response validation - checker om API kaldet var succesfuldt
+        // Response validering - checker om API kaldet var succesfuldt
         if (!response.ok) throw new Error("Noget gik galt med hentningen");
 
         // Parser JSON response data
